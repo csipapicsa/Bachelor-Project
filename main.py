@@ -11,7 +11,13 @@ from shapely import geometry
 import geog
 from shapely.geometry import Polygon
 
+# multipolygon maker
+from shapely.ops import unary_union
+
 import numpy as np
+
+# reading
+import xarray as xr
 
 def saveGPS(file, filename=""):
     """
@@ -68,3 +74,10 @@ def polygonMakerShapely(datab, diameter, numberOfPoints=100):
         poly = geometry.Polygon(geog.propagate([coordinates.x, coordinates.y], angles, diameter))
         polygon.append(poly)
     return polygon
+    
+def pointMaper(df, fileType="pandas"):
+
+    ma = folium.Map([47.762196497129665, 19.6742448729209], zoom_start=7)
+    for i, r in df.iterrows():
+        folium.Marker(location=[r.LATITUDE, r.LONGITUDE], fill_color='#43d9de', radius=8 ).add_to(ma)
+    display(ma)
