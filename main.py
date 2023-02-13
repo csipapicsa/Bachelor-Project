@@ -1,6 +1,7 @@
 import json
 
 import geopandas as gpd
+import pandas as pd
 
 # save resc
 import gc
