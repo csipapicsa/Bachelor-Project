@@ -5,6 +5,7 @@ import pandas as pd
 
 # save resc
 import gc
+import pyarrow.parquet as pq
 
 # mapping
 import folium
