@@ -44,6 +44,8 @@ def openJSON(filename=""):
     file = open(str("rawPoints/"+filename+".json"))
     fileR = json.load(file)
     gdf = gpd.GeoDataFrame.from_features(fileR["features"])
+    # gdf.crs = "EPSG:23700" #Hungary, but doesnt wokr when I wanna explore
+    gdf.crs = "epsg:4326"
     file.close()
     # cleaning
     del fileR
@@ -75,7 +77,11 @@ def polygonMakerShapely(datab, diameter, numberOfPoints=100):
     for coordinates in datab["geometry"]:
         poly = geometry.Polygon(geog.propagate([coordinates.x, coordinates.y], angles, diameter))
         polygon.append(poly)
-    return polygon
+    # new 19.02.2023 -- since we return the whole db, it is slower. 
+    datab = gpd.GeoDataFrame(geometry=polygon)
+    datab.crs = "epsg:4326"
+    # datab["geometry"] = polygon
+    return datab
     
 def pointMaper(df, fileType="pandas"):
 
