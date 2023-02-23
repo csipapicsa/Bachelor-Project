@@ -1,5 +1,5 @@
 import numpy as np
-!pip install matplotlib
+%pip install networkx
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 
