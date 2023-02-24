@@ -32,10 +32,12 @@ def polygonMakerShapely(datab, diameter, numberOfPoints=100):
     # datab["geometry"] = polygon
     return datab
 
-
+print("imports started")
 import json
-import geopandas as gpd
+
 import numpy as np
 # !pip install geog
 import geog
 from shapely import geometry
+print("before geopandas")
+import geopandas as gpd
