@@ -1,4 +1,5 @@
 json==2.0.9
-geopandas==0.10.2
+geopandas
 numpy==1.21.6
 shapely
+geog
