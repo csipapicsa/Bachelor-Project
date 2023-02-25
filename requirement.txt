@@ -1,0 +1,7 @@
+
+
+
+geopandas
+numpy==1.21.6
+shapely
+geog
