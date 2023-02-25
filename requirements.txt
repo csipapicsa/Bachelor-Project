@@ -1,7 +1,9 @@
-
-
-
+folium
+pandas
+pyarrow
 geopandas
 numpy
 shapely
 geog
+
+xarray
