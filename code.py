@@ -1,5 +1,7 @@
 #import utils as m
+
 import streamlit as st
+
 import main as m
 import folium
 from streamlit_folium import st_folium
@@ -10,16 +12,25 @@ st.set_page_config(
 st.markdown("# Check my code")
 
 # init # maybe the readins should get @st.cache_data ? 
-gdf1 = m.openJSON(filename="pubs")
-gdf2 = m.openJSON(filename="fuel")
-gdf3 = m.openJSON(filename="supermarket")
+
+PATH = {}
+PATH["processed"] = "data/amenities/processed/"
+
+
+gdf1 = m.gpd.read_parquet(PATH["processed"]+ "supermarket.parquet")
+gdf2 = m.gpd.read_parquet(PATH["processed"]+ "pubs.parquet")
+gdf3 = m.gpd.read_parquet(PATH["processed"]+ "motorway.parquet")
+gdf4 = m.gpd.read_parquet(PATH["processed"]+ "library.parquet")
+gdf5 = m.gpd.read_parquet(PATH["processed"]+ "fuel.parquet")
+st.write("packages are loaded")
 
 def Update():
     
-    print("diameter", radiusPubs)
-    polyg1 = m.polygonMakerShapely(gdf1, diameter=radiusPubs, numberOfPoints=50)
-    polyg2 = m.polygonMakerShapely(gdf2, diameter=radiusFuel, numberOfPoints=50)
-    polyg3 = m.polygonMakerShapely(gdf3, diameter=radiusSP, numberOfPoints=50)
+    
+    st.write("updating", radiusPubs, radiusFuel, radiusSP)
+    polyg1 = m.polygonMakerShapely(gdf2, diameter=radiusPubs, numberOfPoints=50)
+    polyg2 = m.polygonMakerShapely(gdf5, diameter=radiusFuel, numberOfPoints=50)
+    polyg3 = m.polygonMakerShapely(gdf1, diameter=radiusSP, numberOfPoints=50)
     
     
     polyg1 = polyg1.geometry.unary_union
@@ -81,21 +92,6 @@ form.form_submit_button("Submit", on_click=Update())
 
 #submitted = st.form_submit_button("Calculations")
 
-
-
-'''if st.button('Calculation'):
-    gdf1 = m.openJSON(filename="pubs")
-    print("diameter", radiusPubs)
-    polyg1 = m.polygonMakerShapely(gdf1, diameter=radiusPubs, numberOfPoints=50)
-    polyg1 = polyg1.geometry.unary_union
-    multi1 = m.gpd.GeoSeries([polyg1])
-    multi1.explore()
-    st.write(radiusPubs)
-    st.write(len(multi1.explode()))
-    ma = folium.Map()
-    st_map = st_folium(ma)
-    # do the calculation
-'''
 #
 
 # transaction_df = transaction_df[transaction_df["list_price"] > standard_cost_slider
