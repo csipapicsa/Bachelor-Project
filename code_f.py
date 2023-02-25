@@ -11,9 +11,9 @@ import matplotlib
 import mapclassify
 
 st.set_page_config(
-    page_title="Gergo Gyoir's Bachelor Project", page_icon="🎄", initial_sidebar_state="collapsed"
+    page_title="code_f Gergo Gyoir's Bachelor Project", page_icon="🎄", initial_sidebar_state="collapsed"
 )
-st.markdown("# code.ppy Check my code")
+st.markdown("# code_f Check my code")
 
 # init # maybe the readins should get @st.cache_data ? 
 
@@ -57,7 +57,7 @@ def Update():
     #multi1 = m.gpd.GeoSeries([boundRes])
     #multi1.crs = "epsg:4326"
     st_map = folium_static(multi1.explore(), width=1000)
-
+    #st_map = st_folium(multi1, width=800, height=450)
 
 
 

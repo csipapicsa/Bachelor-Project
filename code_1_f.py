@@ -126,7 +126,7 @@ radiusSP = col3.select_slider(
     key="radiusSP",
 )
 
-st.markdown("### ...and push the submit button")
+st.markdown("### ...and push the submit button ... ")
 
 # it put it into the form
 form.form_submit_button("Submit", on_click=Update())
