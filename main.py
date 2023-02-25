@@ -21,6 +21,8 @@ import numpy as np
 # reading
 import xarray as xr
 
+import streamlit as st
+
 def saveGPS(file, filename=""):
     """
     save geopandas file to json object
@@ -36,7 +38,8 @@ def saveGPS(file, filename=""):
     del file
     gc.collect()
     return None
-    
+
+@st.cache_data
 def openJSON(filename=""):
     """
     open geopandas file from json object
