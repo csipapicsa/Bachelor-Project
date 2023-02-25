@@ -1,3 +1,7 @@
+# risky import
+from collections import defaultdict
+
+
 import json
 
 import geopandas as gpd

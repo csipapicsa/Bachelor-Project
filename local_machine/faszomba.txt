@@ -1,0 +1,10 @@
+boundary4 = m.gpd.GeoSeries(m.unary_union(polyg4))
+boundary3 = m.gpd.GeoSeries(m.unary_union(polyg3))
+boundary2 = m.gpd.GeoSeries(m.unary_union(polyg2))
+boundary1 = m.gpd.GeoSeries(m.unary_union(polyg1))
+
+print(len(boundary4.explode(index_parts=True)))
+print(len(boundary3.explode(index_parts=True)))
+print(len(boundary2.explode(index_parts=True)))
+print(len(boundary1.explode(index_parts=True)))
+print(len(boundaryForest.explode(index_parts=True)))
