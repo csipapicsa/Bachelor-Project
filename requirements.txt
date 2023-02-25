@@ -5,6 +5,6 @@ geopandas
 numpy
 shapely
 geog
-
+streamlit >= 1.9.2
 xarray
 streamlit_folium
