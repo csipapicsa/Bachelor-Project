@@ -1,0 +1,7 @@
+
+json==2.0.9
+
+geopandas
+numpy==1.21.6
+shapely
+geog
