@@ -1,6 +1,6 @@
-pip install geog
+
 json==2.0.9
-pip install geopandas
+
 geopandas
 numpy==1.21.6
 shapely
