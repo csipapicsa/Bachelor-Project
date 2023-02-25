@@ -6,6 +6,10 @@ import main as m
 import folium
 from streamlit_folium import st_folium
 
+# plotting - explore()
+import matplotlib
+import mapclassify
+
 st.set_page_config(
     page_title="Gergo Gyoir's Bachelor Project", page_icon="🎄", initial_sidebar_state="collapsed"
 )

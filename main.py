@@ -2,6 +2,8 @@ import json
 
 import geopandas as gpd
 import pandas as pd
+import matplotlib
+import mapclassify
 
 # save resc
 import gc
