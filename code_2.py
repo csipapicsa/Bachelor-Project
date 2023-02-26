@@ -19,7 +19,7 @@ st.set_page_config(
     layout="centered",
     menu_items={
         "Report a Bug": "mailto:gergo.gyori@gmail.com"
-        'About': "# This page is part of my bachelor project. In case of questions of comment please contact with me: gergo.gyori@gmail.com"
+        "About": "# This page is part of my bachelor project. In case of questions of comment please contact with me: gergo.gyori@gmail.com"
     }
 )
 st.markdown("# Demo - Check my code")
