@@ -18,12 +18,12 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
     layout="centered",
     menu_items={
-        "Report a Bug": "mailto:gergo.gyori@gmail.com"
-        "About": "# This page is part of my bachelor project. In case of questions of comment please contact with me: gergo.gyori@gmail.com"
+        "Report a Bug": "mailto:gergo.gyori@gmail.com",
+        "About": "### This page is part of my bachelor project. In case of questions of comment please contact with me: gergo.gyori@gmail.com"
     }
 )
 st.markdown("# Demo - Check my code")
-st.markdown("##### This will be my code for my bachelor project. The goal is to find ideal places to live / visit based on user inputs. ")
+st.markdown("##### This will be my code for my bachelor project. The goal is to find ideal places to live / visit in Hungary based on user inputs. ")
 st.markdown("##### Here is a demo version. Below the code will show the intersection of all your input. Like: I would like to find every area where: - A pub, a fuel station and a super market is available within 1000 metres ")
 st.markdown("### Define a radius in meters around any... ")
 
@@ -47,10 +47,11 @@ sliderRange.extend(range(1000,10000, 1000))
 sliderRange.extend(range(10000,100000, 10000))
 sliderRange.extend(range(100000,600000, 25000))
 
+airQRange = range(1,100, 5)
+
 
 def Update():
     
-    #st.spinner(text="Calculation is in progress ...")
     #st.write("updating", radiusPubs, radiusFuel, radiusSP)
     # has to be updated:
     INTEREST = [tb1,tb2,tb3,tb4,tb5]
@@ -106,8 +107,7 @@ def Update():
     # multi1.crs = "epsg:4326"
     #multi1 = m.gpd.GeoSeries([boundRes])
     #multi1.crs = "epsg:4326"
-    st_map = folium_static(boundRes.explore(), width=1500)
-    #st.success('Done!')
+    st_map = folium_static(boundRes.explore())
 
 
 
@@ -119,6 +119,8 @@ chkb2, col2 = form.columns([1, 3])
 chkb3, col3 = form.columns([1, 3])
 chkb4, col4 = form.columns([1, 3])
 chkb5, col5 = form.columns([1, 3])
+
+aircol1, aircol2 = form.columns([2, 2])
 # bttn = form.columns([3])
 
 
@@ -163,7 +165,30 @@ radiusLIB = col4.select_slider(
     value = 1000,
     key="library",
 )
+
+air1 = aircol1.slider(
+    "Under construct - Air Quality: PM25",
+    min_value = 1,
+    max_value = 500,
+    value = 100,
+    step = 10,
+    key="PM25",
+)
+
+air2 = aircol2.slider(
+    "Under construct - Air Quality: PM10",
+    min_value = 1,
+    max_value = 500,
+    value = 100,
+    step = 10,
+    key="PM10",
+)
+
+
 st.markdown("### ...and push the submit button")
+
+
+
 
 # it put it into the form
 form.form_submit_button("Submit", on_click=Update())
