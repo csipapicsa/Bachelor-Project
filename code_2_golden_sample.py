@@ -17,11 +17,8 @@ st.set_page_config(
     page_icon="🎄", 
     initial_sidebar_state="collapsed",
     layout="wide",
-    menu_items={
-        'About': "# This is a header. This is an *extremely* cool app!"
-    }
 )
-st.markdown("# Demo - Check my code")
+st.markdown("# code_2_demo Demo codeCheck my code")
 st.markdown("##### This will be my code for my bachelor project. The goal is to find ideal places to live / visit based on user inputs. ")
 st.markdown("##### Here is a demo version. Below the code will show the intersection of all your input. Like: I would like to find every area where: - A pub, a fuel station and a super market is available within 1000 metres ")
 st.markdown("### Define a radius in meters around any... ")
@@ -105,7 +102,7 @@ def Update():
     # multi1.crs = "epsg:4326"
     #multi1 = m.gpd.GeoSeries([boundRes])
     #multi1.crs = "epsg:4326"
-    st_map = folium_static(boundRes.explore(), width=1500)
+    st_map = folium_static(boundRes.explore(), width=1000)
 
 
 

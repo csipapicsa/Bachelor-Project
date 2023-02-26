@@ -15,10 +15,10 @@ from collections import defaultdict
 st.set_page_config(
     page_title="code_1_f Gergo Gyoir's Bachelor Project", page_icon="🎄", initial_sidebar_state="collapsed"
 )
-st.markdown("# Demo codeCheck my code")
+st.markdown("# code_2_demo Demo codeCheck my code")
 st.markdown("##### This will be my code for my bachelor project. The goal is to find ideal places to live / visit based on user inputs. ")
 st.markdown("##### Here is a demo version. Below the code will show the intersection of all your input. Like: I would like to find every area where: - A pub, a fuel station and a super market is available within 1000 metres ")
-st.markdown("### Define a radius in meter around any... ")
+st.markdown("### Define a radius in meters around any... ")
 
 # init # maybe the readins should get @st.cache_data ? 
 
@@ -26,7 +26,7 @@ PATH = {}
 PATH["processed"] = "data/amenities/processed/"
 
 
-AMENITIES = ["supermarket", "pubs", "fuelstation", "motorway", "library"]
+AMENITIES = ["pubs", "fuelstation", "supermarket", "motorway", "library"]
 
 # load
 amenitiesDict = defaultdict(str)
@@ -46,13 +46,15 @@ def Update():
 
     #st.write("updating", radiusPubs, radiusFuel, radiusSP)
     # has to be updated:
-    INTEREST = [1,1,1,0,0]
-    RADIUS = [radiusPubs,radiusFuel,radiusSP,3021,3000]
+    INTEREST = [tb1,tb2,tb3,tb4,tb5]
+    RADIUS = [radiusPubs, radiusFuel, radiusSP, radiusHR,radiusLIB]
+    #INTEREST = [1,1,1,1,1]
+    #RADIUS = [radiusSP,radiusPubs,radiusFuel,3000,3000]
     
     FOCUS = "polygons"
     rankDict = defaultdict(int)
     for inte, rad, amen in zip(INTEREST, RADIUS, AMENITIES):
-        if inte == 1:
+        if inte == True:
             FOCUS = "polygons"
             # do the thing
             #st.write(amenitiesDict[str(amen+"-"+FOCUS)])
@@ -101,31 +103,58 @@ def Update():
 
 
 
-st.write("")
+
 form = st.form(key="form_settings")
-col1, col2, col3 = form.columns([1, 1, 1])
 
+chkb1, col1 = form.columns([1, 3])
+chkb2, col2 = form.columns([1, 3])
+chkb3, col3 = form.columns([1, 3])
+chkb4, col4 = form.columns([1, 3])
+chkb5, col5 = form.columns([1, 3])
+# bttn = form.columns([3])
+
+
+
+tb1 = chkb1.checkbox('Include', key="tb1", value=True)
 radiusPubs = col1.select_slider(
-    " ... Pub",
+    "... pub",
     options=sliderRange,
     value = 1000,
-    key="radiusP",
+    key="radiusPubsK",
 )
 
+tb2 = chkb2.checkbox('Include', key="tb2", value=True)
 radiusFuel = col2.select_slider(
-    " ... Fuel station",
+    "... fuel station",
     options=sliderRange,
     value = 1000,
-    key="radiusFUEL",
+    key="radiusFuelK",
 )
 
+tb3 = chkb3.checkbox('Include', key="tb3", value=True)
 radiusSP = col3.select_slider(
-    " ... super market",
+    "... supermarket",
     options=sliderRange,
     value = 1000,
-    key="radiusSP",
+    key="radiusSupermarket",
 )
 
+tb4 = chkb4.checkbox('Include', key="tb4")
+radiusHR = col4.select_slider(
+    "... highway Ramp",
+    options=sliderRange,
+    value = 1000,
+    key="hiwgwayramp",
+)
+
+
+tb5 = chkb5.checkbox('Include', key="tb5")
+radiusLIB = col4.select_slider(
+    "... library",
+    options=sliderRange,
+    value = 1000,
+    key="library",
+)
 st.markdown("### ...and push the submit button")
 
 # it put it into the form
