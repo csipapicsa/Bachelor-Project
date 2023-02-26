@@ -13,12 +13,13 @@ import mapclassify
 from collections import defaultdict
 
 st.set_page_config(
-    page_title="code_1_f Gergo Gyoir's Bachelor Project", 
+    page_title="Gergo Gyori's Bachelor Project - IT University of Copenhagen, Data Science", 
     page_icon="🎄", 
     initial_sidebar_state="collapsed",
-    layout="wide",
+    layout="centered",
     menu_items={
-        'About': "# This is a header. This is an *extremely* cool app!"
+        "Report a Bug": "mailto:gergo.gyori@gmail.com"
+        'About': "# This page is part of my bachelor project. In case of questions of comment please contact with me: gergo.gyori@gmail.com"
     }
 )
 st.markdown("# Demo - Check my code")
@@ -49,7 +50,7 @@ sliderRange.extend(range(100000,600000, 25000))
 
 def Update():
     
-
+    st.spinner(text="Calculation is in progress ...")
     #st.write("updating", radiusPubs, radiusFuel, radiusSP)
     # has to be updated:
     INTEREST = [tb1,tb2,tb3,tb4,tb5]
@@ -106,6 +107,7 @@ def Update():
     #multi1 = m.gpd.GeoSeries([boundRes])
     #multi1.crs = "epsg:4326"
     st_map = folium_static(boundRes.explore(), width=1500)
+    st.success('Done!')
 
 
 
