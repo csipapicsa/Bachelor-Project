@@ -50,7 +50,7 @@ sliderRange.extend(range(100000,600000, 25000))
 
 def Update():
     
-    st.spinner(text="Calculation is in progress ...")
+    #st.spinner(text="Calculation is in progress ...")
     #st.write("updating", radiusPubs, radiusFuel, radiusSP)
     # has to be updated:
     INTEREST = [tb1,tb2,tb3,tb4,tb5]
@@ -107,7 +107,7 @@ def Update():
     #multi1 = m.gpd.GeoSeries([boundRes])
     #multi1.crs = "epsg:4326"
     st_map = folium_static(boundRes.explore(), width=1500)
-    st.success('Done!')
+    #st.success('Done!')
 
 
 
