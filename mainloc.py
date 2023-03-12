@@ -1,6 +1,9 @@
 # risky import
 from collections import defaultdict
 
+#developmemnt
+import importlib as i
+
 
 import json
 
@@ -27,6 +30,11 @@ import numpy as np
 # reading
 import xarray as xr
 
+# polygon expander
+from shapely.ops import transform
+from functools import partial
+import pyproj
+
 
 def saveGPS(file, filename=""):
     """
@@ -44,7 +52,7 @@ def saveGPS(file, filename=""):
     gc.collect()
     return None
 
-@st.cache_data
+
 def openJSON(filename=""):
     """
     open geopandas file from json object
@@ -97,3 +105,30 @@ def pointMaper(df, fileType="pandas"):
     for i, r in df.iterrows():
         folium.Marker(location=[r.LATITUDE, r.LONGITUDE], fill_color='#43d9de', radius=8 ).add_to(ma)
     display(ma)
+    
+    
+# polygon expander for Hungary
+
+def polygonExpander(data, diameter=0):
+    # since we are focusing on Hungary
+    # init
+    hun_crs = "EPSG:23700"
+    global_crs = "EPSG:4326"
+    
+    data = data.to_crs(hun_crs) # has to project for proper expansion
+    l = list(data.geometry) # get the geometries
+    
+    project = partial(
+    pyproj.transform,
+    pyproj.Proj(hun_crs), # source coordinate system (WGS 84)
+    pyproj.Proj(hun_crs)  # target coordinate system (Web Mercator)
+                                )
+
+    newValues = []
+    for i in l:
+        newValues.append(transform(project, i).buffer(diameter))
+                       
+    data.geometry = newValues
+    data = data.to_crs(global_crs) # convert back to normal GPS
+
+    return data
