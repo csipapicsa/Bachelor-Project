@@ -7,6 +7,16 @@ language["DESCRIPTIONS"]["welcome"] = {}
 language["DESCRIPTIONS"]["welcome"]["ENG"] = {}
 language["DESCRIPTIONS"]["welcome"]["ENG"] = "Hello bello"
 
+# expanders 
+language["ENG"] = {}
+language["HUN"] = {}
+language["ENG"]["expander-air"] = "Air quality criterias"
+language["HUN"]["expander-air"] = "Levegőminőség kritériák"
+language["ENG"]["expander-air-description"] = "Please choose the criterias"
+language["HUN"]["expander-air-description"] = "Kérjük válasszon az alábbi kritériák közül"
+language["ENG"]["include_button"] = "Include"
+language["HUN"]["include_button"] = "Tartalmazza"
+
 ## Classes
 # slider init
 streamlitClass =  {}
@@ -28,5 +38,5 @@ streamlitClass["RangeAmenities"] = sliderForestRanges
 amenities = {}
 amenities["Hungarian"] =  ("fuelstation", "library","motorway", "pubs", "supermarket")
 
-
+# weather
 
