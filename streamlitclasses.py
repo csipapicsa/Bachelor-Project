@@ -1,4 +1,5 @@
 ### streamlit class
+import streamlit as st
 
 ## Descriptions
 language = {}
@@ -35,8 +36,21 @@ sliderForestRanges = [100,200,300,400,500,600,700,800,900,1000,1500,2000,3000,
 streamlitClass["RangeAmenities"] = sliderForestRanges
 
 # available databases
-amenities = {}
-amenities["Hungarian"] =  ("fuelstation", "library","motorway", "pubs", "supermarket")
+# init dataset
+PATH = {}
+PATH["processed"] = "data/amenities/processed/"
 
-# weather
+AMENITIES = ["supermarket", "pubs", "fuelstation", "motorway", "library"]
 
+#AIRMEASURES = ["NO2", "O3", "CO", "PM10", "PM25", "OVERALL"]
+AIRMEASURES = ["NO2", "O3", "CO", "PM10", "PM25"]
+
+# weather      
+            
+def sliderMaker(opt):
+    ccc = st.select_slider('How old are you?', 
+            options=opt,
+            value="Good",
+            key="PM25_slider")
+    return ccc
+    
