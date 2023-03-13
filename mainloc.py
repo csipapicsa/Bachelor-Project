@@ -35,6 +35,9 @@ from shapely.ops import transform
 from functools import partial
 import pyproj
 
+links = ["https://docs.google.com/document/d/1nJNTRmol4ymWYo0FJfWdZ3azY0MA1GzLiD9Hzr54dY0/edit", "https://docs.google.com/document/d/127Fu-z-c_WAIfmnDXootdAbibFylmHP0hJhB4WWNUVo/edit"]
+
+
 
 def saveGPS(file, filename=""):
     """

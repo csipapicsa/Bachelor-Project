@@ -1,5 +1,6 @@
 
 data/weather/raw/qq_ens_mean_0.25deg_reg_v20.0e.nc
+data/weather/unprocessed/qq_ens_mean_0.25deg_reg_v20.0e.nc
 cache/
 _readings/
 data/osmnxHun
